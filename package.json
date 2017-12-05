@@ -1,0 +1,27 @@
+{
+  "name": "tango-ui",
+  "version": "1.0.0",
+  "description": "Tango ui kit",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgred/tango-ui.git"
+  },
+  "author": "Alex Dolzhenkov <alexgred.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexgred/tango-ui/issues"
+  },
+  "homepage": "https://github.com/alexgred/tango-ui#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-less": "^3.3.2",
+    "gulp-sourcemaps": "^2.6.1"
+  }
+}
