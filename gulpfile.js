@@ -59,6 +59,6 @@ gulp.task('dev:sync', function() {
 ======================*/
 gulp.task('dev', gulp.series(
   'dev:clean', 
-  'dev:les',
+  'dev:less',
   'dev:sync'
 ));
