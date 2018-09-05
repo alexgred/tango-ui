@@ -32,7 +32,7 @@ gulp.task('dev:ts', function () {
   return browserify({
       basedir: '.',
       debug: true,
-      entries: ['src/ts/animation.ts'],
+      entries: ['src/ts/Animation.ts'],
       cache: {},
       packageCache: {}
   })

@@ -7,6 +7,6 @@
     "noUnusedParameters": true
   },
   "files": [
-    "src/ts/animation.ts"
+    "src/ts/Animation.ts"
   ]
 }
