@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "target": "ES2017",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "files": [
+    "src/ts/animation.ts"
+  ]
+}

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/alexgred/tango-ui#readme",
   "devDependencies": {
     "browser-sync": "^2.24.7",
+    "browserify": "^16.2.2",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.10.0",
@@ -25,6 +26,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "node-sass": "^4.9.3",
-    "typescript": "^3.0.3"
+    "tsify": "^4.0.0",
+    "typescript": "^3.0.3",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

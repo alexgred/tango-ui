@@ -1,0 +1,46 @@
+{
+  "rules": {
+    "indent": [
+      true, 
+      "spaces", 
+      2
+    ],
+    "semicolon": [
+      true, 
+      "always"
+    ],
+    "typedef": [
+      true, 
+      "parameter", 
+      "member-variable-declaration"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "no-console": [
+      true, 
+      "log"
+    ],
+    "no-duplicate-imports": true,
+    "class-name": true,
+    "interface-name": [
+      true, 
+      "always-prefix"
+    ]
+  },
+  "defaultSeverity": "warning"
+}

@@ -1,35 +1,53 @@
 'use strict';
 
 const gulp = require('gulp');
-const less = require('gulp-less');
+const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const cleanCSS = require('gulp-clean-css');
 const del = require('del');
+const browserify = require('browserify');
+const tsify = require('tsify');
+const source = require('vinyl-source-stream');
 const browserSync = require('browser-sync');
 
+// const uglify = require('gulp-uglify');
+// const cleanCSS = require('gulp-clean-css');
+// const rename = require('gulp-rename');
 
-/* Styles
+
+/* Dev
 ==================== */
-gulp.task('dev:less', function() {
 
-  return gulp.src('./src/less/styles.less')
+/* Style */
+gulp.task('dev:styles', function() {
+
+  return gulp.src('./src/scss/styles.scss')
     .pipe(sourcemaps.init())
-    .pipe(less())
+    .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/css'))
 });
 
-
-/* Clean 
-=======================*/
-gulp.task('dev:clean', function() {
-
-  return del('./public');
+/* TypeScript */
+gulp.task('dev:ts', function () {
+  return browserify({
+      basedir: '.',
+      debug: true,
+      entries: ['src/ts/animation.ts'],
+      cache: {},
+      packageCache: {}
+  })
+  .plugin(tsify)
+  .bundle()
+  .pipe(source('bundle.js'))
+  .pipe(gulp.dest('./public/js'));
 });
 
-gulp.task('prod:clean', function() {
-  
-  return del('./dist');
+
+/* Clean 
+======================= */
+gulp.task('clean', function() {
+
+  return del('./public');
 });
 
 
@@ -43,8 +61,8 @@ gulp.task('dev:index', function() {
 
 
 /* Browser sync 
-==============================*/
-gulp.task('dev:sync', function() {
+============================== */
+gulp.task('sync', function() {
   browserSync.init({
     server: {
       baseDir: "./public"
@@ -52,13 +70,33 @@ gulp.task('dev:sync', function() {
   });
 
   browserSync.watch('./public/css/*.css').on('change', browserSync.reload);
+  browserSync.watch('./public/js/*.js').on('change', browserSync.reload);
+  browserSync.watch('./public/*.html').on('change', browserSync.reload);
+});
+
+
+/* Watch
+===================== */
+
+/* Watch */
+gulp.task('watch', function() {
+  gulp.watch('./src/scss/**/*.scss', gulp.series('dev:styles')); // watch styles
+  gulp.watch('./src/ts/**/*.ts', gulp.series('dev:ts')); // watch ts files
+  gulp.watch('./src/*.html', gulp.series('dev:index')); // watch html files
 });
 
 
 /* Build 
 ======================*/
+
+/* Dev build*/
+gulp.task('dev:build', gulp.series(
+  'clean', 
+  gulp.parallel('dev:styles', 'dev:ts', 'dev:index')
+));
+
+/* Dev  build + watch */
 gulp.task('dev', gulp.series(
-  'dev:clean', 
-  'dev:less',
-  'dev:sync'
+  'dev:build',
+  gulp.parallel('watch', 'sync')
 ));
