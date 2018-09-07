@@ -2,8 +2,8 @@
  * Interface for options Object.
  */
 interface IOptions {
-  classToAdd: string;
-  offset: number;
+  classToAdd?: string;
+  offset?: number;
 }
 
 /**
@@ -26,7 +26,9 @@ export default class ViewportChecker {
    * @param userOptions - Object for user options
    */
   constructor(selector: string, userOptions?: IOptions) {
-    this.options = {...this.options, ...userOptions};
+    if (userOptions) {
+      this.options = {...this.options, ...userOptions};
+    }
     this.windowHeigth = this.getWindowHeight();
     this.element = document.querySelector(selector);
 
