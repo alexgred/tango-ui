@@ -1,4 +1,16 @@
-@import 'animation';
+// Variables
+@import './variables.scss';
+
+
+// Mixins
+@import './mixins/media.scss';
+@import './mixins/grid.scss';
+
+// Styles
+@import './animation.scss';
+@import './grid.scss';
+
+
 
 body {
   height: 3000px;
