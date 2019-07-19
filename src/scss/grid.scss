@@ -5,6 +5,11 @@
 
 // Container
 .container {
-  @include make-container();
-  @include make-container-max-width();
+  @include grid-container();
+  @include grid-container-max-width();
+}
+
+// Row
+.row {
+  @include grid-row();
 }

@@ -19,6 +19,9 @@ $grid-breakpoints: (
 // Container padding.
 $container-padding-x: 15px !default;
 
+// Grid row margins
+$grid-gutter: $container-padding-x !default;
+
 
 // Container maximum width. Define the maximum width of `.container` for different screen sizes.
 $container-max-widths: (
